@@ -111,6 +111,13 @@ writeOGR(obj=sqr_df_selected[sample(1:nrow(sqr_df_selected@data),1),],
          driver = "KML",
          overwrite_layer = T)
 
+### Export TEN TILES as KML
+base_sqr <- paste0("ten_tile_",countrycode)
+writeOGR(obj=subset,
+         dsn=paste(tile_dir,base_sqr,".kml",sep=""),
+         layer=base_sqr,
+         driver = "KML",
+         overwrite_layer = T)
 
 ### Generate random points
 pts_rand <- spsample(sqr_df_selected,100,type = "random")
@@ -159,7 +166,7 @@ sqr_df_selected$first <- aggregate(x=aoi["NAME_1"],
                                    by=sqr_df_selected,
                                    FUN=first)$NAME_1
 
-tiles <- sqr_df_selected[-grep("Lake",sqr_df_selected$first),]
+tiles <- sqr_df_selected[-grep("Lacs",sqr_df_selected$first),]
 plot(tiles)
 
 ### Export as KML
