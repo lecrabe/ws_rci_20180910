@@ -127,9 +127,9 @@ plot(pts_rand)
 pts_strt <- spsample(sqr_df_selected,100,type = "stratified")
 plot(pts_strt)
 
-### Reproject in UTM 36
-pts_utm <- spTransform(pts_rand,CRS("+init=epsg:32636"))
-aoi_utm <- spTransform(aoi,CRS("+init=epsg:32636"))
+### Reproject in UTM 30
+pts_utm <- spTransform(pts_rand,CRS("+init=epsg:32630"))
+aoi_utm <- spTransform(aoi,CRS("+init=epsg:32630"))
 
 
 ### Convert the points into a SpatialPointDataFrame
