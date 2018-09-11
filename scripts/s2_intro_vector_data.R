@@ -171,8 +171,9 @@ plot(tiles)
 
 ### Export as KML
 base_sqr <- paste0("tiling_system_",countrycode)
-writeOGR(obj=tiles,
-         dsn=paste(tile_dir,base_sqr,".kml",sep=""),
+writeOGR(obj=sqr_df_selected,
+         dsn=paste(tile_dir,base_sqr,".shp",sep=""),
          layer=base_sqr,
-         driver = "KML",
+         driver = "ESRI Shapefile",
          overwrite_layer = T)
+
