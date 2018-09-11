@@ -32,6 +32,7 @@ packages(rgeos)
 packages(ggplot2)
 packages(rgdal)
 packages(dplyr)
+packages(foreign)
 
 ## Set the working directory
 rootdir       <- "~/ws_rci_20180910/"

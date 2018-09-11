@@ -100,7 +100,7 @@ base = in_base[0:len(in_base)-4]
 ###############################################################
 ##################### Create a temp directory
 ###############################################################
-tmpdir = tempfile.mkdtemp()
+tmpdir = tempfile.mkdtemp(dir=in_path)
 
 
 ###############################################################
@@ -278,16 +278,9 @@ for i in range(1,nx+1):
         os.system(cut)
 
 	################# Clip the mask to the tile extent
-	clip = "oft-clip.pl %s/%s_%s_%s.tif %s  %s/%s_mask_%s_%s_tmp.tif" % (tmpdir,base,i,j,mask,tmpdir,base,i,j)
+	clip = "gdal_translate -co \"COMPRESS=LZW\" -srcwin %r %r %r %r  %s  %s/%s_mask_%s_%s.tif" % (x_off,y_off,x_size,y_size,mask,tmpdir,base,i,j)
         print "-"*40 + "\nClip the mask to the tile extent:\n" + clip
         os.system(clip)
-
-	################# Compress and clean
-        compress = "gdal_translate -co \"COMPRESS=LZW\" %s/%s_mask_%s_%s_tmp.tif %s/%s_mask_%s_%s.tif" % (tmpdir,base,i,j,tmpdir,base,i,j) 
-        print "-"*40 + "\nCompress:\n" + compress
-        os.system(compress)
-        to_rm = tmpdir + "/" + base + "_mask_" + str(i) + "_" + str(j) + "_tmp.tif"
-        os.remove(to_rm)
 
 	################# Calculate histogram over the tile
 	hist=  "oft-his -i %s/%s_%s_%s.tif -o %s/%s_%s_%s.txt -um %s/%s_mask_%s_%s.tif -maxval %s" % (tmpdir,base,i,j,tmpdir,base,i,j,tmpdir,base,i,j,maxval)
@@ -319,4 +312,4 @@ hist.to_csv(oufile,sep=" ",header=False,index=True)
 ################################################################
 #################### Clean the temporary directory
 ################################################################
-#shutil.rmtree(tmpdir)
+shutil.rmtree(tmpdir)
