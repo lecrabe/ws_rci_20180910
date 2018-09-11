@@ -6,6 +6,6 @@
 ####################################################################################################
 ####################################################################################################
 
-the_map    <- gfc_mp_sub
+the_map    <- carte_0316_sw
 sae_dir    <- paste0(dirname(the_map),"/","sae_design_",substr(basename(the_map),1,nchar(basename(the_map))-4),"/")
 point_file <- list.files(sae_dir,glob2rx("pts_*.csv"))

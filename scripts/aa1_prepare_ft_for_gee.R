@@ -15,22 +15,7 @@ library(plyr)
 library(foreign)
 
 
-#######################################################################
-##############################     SETUP YOUR DATA 
-#######################################################################
-the_map <- paste0(dd_dir,"dd_map_utm.tif")
 
-sae_dir  <- paste0(dirname(the_map),"/",
-                   "sae_design_",
-                   substr(basename(the_map),
-                          1,
-                          nchar(basename(the_map))-4
-                          ),
-                   "/"
-                   )
-
-## Read the datafile and setup the correct names for the variables
-point_file <- list.files(sae_dir,glob2rx("pts_CE*.csv"))
 pts <- read.csv(paste0(sae_dir,point_file))
 
 ## Check that names match

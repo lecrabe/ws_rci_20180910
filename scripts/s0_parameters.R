@@ -71,6 +71,7 @@ dir.create(esa_dir,showWarnings = F)
 dir.create(gfcstore_dir,showWarnings = F)
 dir.create(esastore_dir,showWarnings = F)
 dir.create(tile_dir,showWarnings = F)
+dir.create(tab_dir,showWarnings = F)
 
 #################### GFC PRODUCTS
 gfc_threshold <- 30
