@@ -135,7 +135,7 @@ aoi_utm <- spTransform(aoi,CRS("+init=epsg:32630"))
 ### Convert the points into a SpatialPointDataFrame
 spdf <- SpatialPointsDataFrame(pts_utm@coords,
                                as.data.frame(1:length(pts_utm)),
-                               proj4string = CRS("+init=epsg:32636")
+                               proj4string = CRS("+init=epsg:32630")
 )
 names(spdf@data) <- "pt_id"
 
