@@ -18,7 +18,7 @@ p4=50  # iterations of algorithm
 p5=5   # segment minimum size (pixels)
 
 
-for input in `ls $workdir/rci_sw_2003_mosaic-2018-09-12-1042-0000008192-0000004096.tif`;
+for input in `ls $workdir/*.tif`;
   do echo $input;
   
   otbcli_MeanShiftSmoothing      -in $input         -fout $workdir/tmp_smooth.tif   -foutpos $workdir/tmp_pos.tif -spatialr $p1 -ranger $p2 -thres $p3 -maxiter $p4;
