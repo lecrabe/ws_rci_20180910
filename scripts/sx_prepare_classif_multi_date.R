@@ -103,3 +103,23 @@ pts <- read.csv(paste0(sae_dir,point_file))
 
 loss <- pts[pts$map_class ==3,]
 write.csv(loss,paste0(sae_dir,"check_pertes.csv"),row.names = F)
+
+#### UTILISER LA SUITE aa_xxxx.R pour generer les clips
+
+#### TRANSFORMER LES POINTS VALIDÉS EN TABLE DE FUSION
+df0 <- read.csv(paste0(sae_dir,"collectedData_mockup_CE_2018-09-11_2018-09-11.csv"))
+names(df0)
+df <- df0[df0$ref_class == df0$map_class & df0$map_class == "Perte",]
+names(df)
+
+spdf <- SpatialPointsDataFrame(df[,c("location_x","location_y")],
+                               df[,c("id","ref_code","ref_class")],
+                               proj4string = CRS("+init=epsg:4326")
+)
+
+writeOGR(obj=spdf,
+         dsn=paste0(sae_dir,"points_valides",".kml"),
+         layer=paste0(sae_dir,"points_valides"),
+         driver = "KML",
+         overwrite_layer = T)
+
