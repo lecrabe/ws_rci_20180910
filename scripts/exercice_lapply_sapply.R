@@ -9,7 +9,12 @@ download.file("http://archive.ics.uci.edu/ml/machine-learning-databases/flags/fl
               method="auto"
 )
 
-flags <- read.csv(paste0(tab_dir,"flags.txt"))
+flags <- read.table(paste0(tab_dir,"flags.txt"),sep=",",header=F)
+
+names(flags) <- c("name","landmass","zone","area","population","language","religion",
+"bars","stripes","colours","red","green","blue","gold","white","black",
+"orange","mainhue","circles","crosses","saltires","quarters","sunstars","crescent","triangle",
+"icon","animate","text","topleft","botright")
 
 head(flags)
 dim(flags)
