@@ -107,9 +107,9 @@ write.csv(loss,paste0(sae_dir,"check_pertes.csv"),row.names = F)
 #### UTILISER LA SUITE aa_xxxx.R pour generer les clips
 
 #### TRANSFORMER LES POINTS VALIDÉS EN TABLE DE FUSION
-df0 <- read.csv(paste0(sae_dir,"collectedData_mockup_CE_2018-09-11_2018-09-11.csv"))
+df0 <- read.csv(paste0(sae_dir,"collectedData_mockup_CE_2018-09-12_2018-09-12.csv"))
 names(df0)
-df <- df0[df0$ref_class == df0$map_class & df0$map_class == "Perte",]
+df <- df0[df0$ref_class == df0$map_class,]
 names(df)
 
 spdf <- SpatialPointsDataFrame(df[,c("location_x","location_y")],
