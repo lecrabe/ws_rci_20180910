@@ -114,7 +114,7 @@ system(sprintf("python %s/oft-cutline_crop.py -v %s -i %s -o %s -a %s",
 system(sprintf("gdal_calc.py -A %s --co COMPRESS=LZW --outfile=%s --calc=\"%s\"",
                paste0(esa_dir,"esa_crop.tif"),
                paste0(esa_dir,"esa_mspa.tif"),
-               paste0("(A==1)*2+((A==0)+(A==200))*0+((A>1)*(A<200))*1")
+               paste0("(A==0)*0+(A==1)*2+(A>1)*1")
 ))
 
 
