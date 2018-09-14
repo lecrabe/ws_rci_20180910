@@ -129,7 +129,9 @@ plot(sqr_df)
 plot(sqr_df_selected,add=T,col="red")
 names(sqr_df_selected)
 
-writeOGR(sqr_df_selected,
+proj4string(sqr_df_selected)
+out <- spTransform(sqr_df_selected,CRS('+init=epsg:4326'))
+writeOGR(out[,"id"],
          paste0(lc_dir,"selection_20180914.kml"),
          paste0(lc_dir,"selection_20180914"),
          ("KML"),
