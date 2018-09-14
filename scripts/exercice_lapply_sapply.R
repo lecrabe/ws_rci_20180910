@@ -48,3 +48,6 @@ sapply(unique_vals,length)
 sapply(flags,unique)
 
 lapply(unique_vals, function(elem) elem[2])
+
+fonction <- function(x){tapply(flags[,x],flags$landmass,mean)}
+sapply(11:17,fonction)
