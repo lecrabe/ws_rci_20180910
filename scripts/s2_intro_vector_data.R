@@ -26,6 +26,8 @@ proj4string(aoi)
 plot(aoi)
 
 ##  Export the SpatialPolygonDataFrame as a ESRI Shapefile
+aoi@data$OBJECTID <- row(aoi@data)[,1]
+
 writeOGR(aoi,
          paste0(gadm_dir,"gadm_",countrycode,"_l1.shp"),
          paste0("gadm_",countrycode,"_l1"),

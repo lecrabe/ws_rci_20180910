@@ -5,9 +5,9 @@
 ####################################################################################################
 ####################################################################################################
 options(stringsAsFactors=FALSE)
-workdir <- lsat_dir
+workdir <- "/home/dannunzio/downloads/mosaic-dkk_lsat_2018-10-10-1700/"
 tmpdir <- paste0(workdir,"/tmp/")
-
+dir.create(tmpdir)
 #################### PERFORM SEGMENTATION USING THE OTB-SEG ALGORITHM
 params <- c(3,   # radius of smoothing (pixels)
             16,  # radius of proximity (pixels)
