@@ -35,7 +35,7 @@ packages(dplyr)
 packages(foreign)
 
 ## Set the working directory
-rootdir       <- "~/ws_rci_20180910/"
+rootdir       <- paste0(normalizePath("~/ws_rci_20180910/"),"/")
 
 ## Set two downloads directories
 gfcstore_dir  <- "~/downloads/gfc_2016/"
